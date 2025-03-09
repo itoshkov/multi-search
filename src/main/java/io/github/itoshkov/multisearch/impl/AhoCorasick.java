@@ -13,10 +13,10 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-package com.github.itoshkov.multisearch.impl;
+package io.github.itoshkov.multisearch.impl;
 
 
-import com.github.itoshkov.multisearch.MultiSearch;
+import io.github.itoshkov.multisearch.MultiSearch;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

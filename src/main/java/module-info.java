@@ -16,7 +16,7 @@
 /**
  * The multi-search module.
  */
-module com.github.itoshkov.multisearch {
+module io.github.itoshkov.multisearch {
     requires org.jetbrains.annotations;
-    exports com.github.itoshkov.multisearch;
+    exports io.github.itoshkov.multisearch;
 }

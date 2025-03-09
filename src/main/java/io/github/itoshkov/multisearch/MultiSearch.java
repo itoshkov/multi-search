@@ -13,10 +13,10 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-package com.github.itoshkov.multisearch;
+package io.github.itoshkov.multisearch;
 
 
-import com.github.itoshkov.multisearch.impl.AhoCorasick;
+import io.github.itoshkov.multisearch.impl.AhoCorasick;
 import org.jetbrains.annotations.Blocking;
 import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NonBlocking;

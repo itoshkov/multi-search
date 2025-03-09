@@ -13,7 +13,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-package com.github.itoshkov.multisearch.utils;
+package io.github.itoshkov.multisearch.utils;
 
 
 import org.jetbrains.annotations.NotNull;

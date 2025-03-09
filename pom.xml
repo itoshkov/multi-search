@@ -4,12 +4,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.itoshkov</groupId>
+    <groupId>io.github.itoshkov</groupId>
     <artifactId>multi-search</artifactId>
     <version>0.1</version>
     <name>multi-search - find all needles in the haystack</name>
     <description>
-        A Java library for searching for multiple sequences at the same time. Uses the Aho-Corasick algorithm.
+        A Java library for searching for multiple sequences at the same time. Like search for multiple strings in a
+        string, or searching for multiple byte sequences in a file.
+
+        Requires Java 17 or above.
     </description>
     <url>https://github.com/itoshkov/multi-search</url>
     <licenses>
@@ -48,20 +51,33 @@
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>3.11.2</version>
-                <configuration>
-                    <show>public</show>
-                </configuration>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>3.2.7</version>
                 <executions>
                     <execution>
-                        <id>bundle-sources</id>
+                        <id>sign-artifacts</id>
                         <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.11.2</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
                         <goals>
                             <goal>jar</goal>
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <javadocExecutable>${java.home}/bin/javadoc</javadocExecutable>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -70,12 +86,20 @@
                 <executions>
                     <execution>
                         <id>attach-sources</id>
-                        <phase>verify</phase>
                         <goals>
                             <goal>jar-no-fork</goal>
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.sonatype.central</groupId>
+                <artifactId>central-publishing-maven-plugin</artifactId>
+                <version>0.7.0</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <publishingServerId>central</publishingServerId>
+                </configuration>
             </plugin>
         </plugins>
     </build>

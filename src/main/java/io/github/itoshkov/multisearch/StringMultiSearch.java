@@ -13,12 +13,12 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-package com.github.itoshkov.multisearch;
+package io.github.itoshkov.multisearch;
 
 
-import com.github.itoshkov.multisearch.MultiSearch.Algorithm;
-import com.github.itoshkov.multisearch.MultiSearch.Match;
-import com.github.itoshkov.multisearch.utils.StringIterator;
+import io.github.itoshkov.multisearch.MultiSearch.Algorithm;
+import io.github.itoshkov.multisearch.MultiSearch.Match;
+import io.github.itoshkov.multisearch.utils.StringIterator;
 import org.jetbrains.annotations.Blocking;
 import org.jetbrains.annotations.NonBlocking;
 import org.jetbrains.annotations.NotNull;
