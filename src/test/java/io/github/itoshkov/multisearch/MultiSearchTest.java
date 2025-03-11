@@ -41,11 +41,11 @@ class MultiSearchTest {
     void mainCase() {
         final String text = "she sells seashells by the seashore";
 
-        final StringMultiSearch<Keyword> multiSearch = new StringMultiSearch<>();
-        multiSearch.register("she", Keyword.SHE);
-        multiSearch.register("he", Keyword.HE);
-        multiSearch.register("sea", Keyword.SEA);
-        multiSearch.register("ash", Keyword.ASH);
+        final var multiSearch = new StringMultiSearch<Keyword>()
+                .register("she", Keyword.SHE)
+                .register("he", Keyword.HE)
+                .register("sea", Keyword.SEA)
+                .register("ash", Keyword.ASH);
 
         final var finder = multiSearch.buildFinder();
 
@@ -65,8 +65,8 @@ class MultiSearchTest {
 
     @Test
     void emptyText() {
-        final StringMultiSearch<Integer> multiSearch = new StringMultiSearch<>();
-        multiSearch.register("abc", 0);
+        final var multiSearch = new StringMultiSearch<Integer>()
+                .register("abc", 0);
         final Finder<Integer> finder = multiSearch.buildFinder();
         final var matches = finder.searchIn("").toList();
         assertEquals(List.of(), matches);
@@ -80,9 +80,9 @@ class MultiSearchTest {
 
     @Test
     void noRegisterAfterPrep() {
-        final StringMultiSearch<Integer> multiSearch = new StringMultiSearch<>();
-        multiSearch.register("abc", 0);
-        multiSearch.buildFinder();
+        final var multiSearch = new StringMultiSearch<Integer>()
+                .register("abc", 0);
+        final var ignore = multiSearch.buildFinder();
         assertThrowsExactly(IllegalStateException.class, () -> multiSearch.register("bcd", 1));
     }
 
@@ -93,11 +93,11 @@ class MultiSearchTest {
 
             // serialize
             {
-                final StringMultiSearch<Keyword> multiSearch = new StringMultiSearch<>();
-                multiSearch.register("she", Keyword.SHE);
-                multiSearch.register("he", Keyword.HE);
-                multiSearch.register("sea", Keyword.SEA);
-                multiSearch.register("ash", Keyword.ASH);
+                final StringMultiSearch<Keyword> multiSearch = new StringMultiSearch<Keyword>()
+                        .register("she", Keyword.SHE)
+                        .register("he", Keyword.HE)
+                        .register("sea", Keyword.SEA)
+                        .register("ash", Keyword.ASH);
 
                 final Finder<Keyword> finder = multiSearch.buildFinder();
 

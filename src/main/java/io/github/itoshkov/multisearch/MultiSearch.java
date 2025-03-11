@@ -84,16 +84,17 @@ public abstract class MultiSearch<C, T> {
      *
      * @param keyword    The keyword.
      * @param keywordIds The IDs.
+     * @return This.
      * @throws IllegalArgumentException if no IDs were provided or if the keyword is emtpy.
      * @throws IllegalStateException    if finder was already built, or if an ID was already used.
      */
     @SuppressWarnings("unused")
     @Blocking
     @SafeVarargs
-    public final void register(@NotNull Iterator<C> keyword, @NotNull T... keywordIds)
+    public final MultiSearch<C, T> register(@NotNull Iterator<C> keyword, @NotNull T... keywordIds)
             throws IllegalArgumentException, IllegalStateException {
 
-        register(keyword, List.of(keywordIds));
+        return register(keyword, List.of(keywordIds));
     }
 
     /**
@@ -101,11 +102,12 @@ public abstract class MultiSearch<C, T> {
      *
      * @param keyword    The keyword.
      * @param keywordIds The IDs.
+     * @return This.
      * @throws IllegalArgumentException if no IDs were provided or if the keyword is emtpy.
      * @throws IllegalStateException    if finder was already built, or if an ID was already used.
      */
     @Blocking
-    public final void register(@NotNull Iterator<C> keyword, @NotNull Collection<T> keywordIds)
+    public final MultiSearch<C, T> register(@NotNull Iterator<C> keyword, @NotNull Collection<T> keywordIds)
             throws IllegalArgumentException, IllegalStateException {
 
         lock.lock();
@@ -123,6 +125,8 @@ public abstract class MultiSearch<C, T> {
             final int len = registerKeyword(keyword, keywordIds);
             if (len == 0)
                 throw new IllegalArgumentException("Cannot register empty keyword");
+
+            return this;
         } finally {
             lock.unlock();
         }

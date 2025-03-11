@@ -60,15 +60,16 @@ public class StringMultiSearch<T> {
      *
      * @param keyword    The keyword.
      * @param keywordIds The IDs.
+     * @return This.
      * @throws IllegalArgumentException if no IDs were provided or if the keyword is emtpy.
      * @throws IllegalStateException    if finder was already built, or if an ID was already used.
      */
     @Blocking
     @SafeVarargs
-    public final void register(@NotNull String keyword, @NotNull T... keywordIds)
+    public final StringMultiSearch<T> register(@NotNull String keyword, @NotNull T... keywordIds)
             throws IllegalArgumentException, IllegalStateException {
 
-        register(keyword, List.of(keywordIds));
+        return register(keyword, List.of(keywordIds));
     }
 
     /**
@@ -76,14 +77,16 @@ public class StringMultiSearch<T> {
      *
      * @param keyword    The keyword.
      * @param keywordIds The IDs.
+     * @return This.
      * @throws IllegalArgumentException if no IDs were provided or if the keyword is emtpy.
      * @throws IllegalStateException    if finder was already built, or if an ID was already used.
      */
     @Blocking
-    public void register(@NotNull String keyword, @NotNull Collection<T> keywordIds)
+    public StringMultiSearch<T> register(@NotNull String keyword, @NotNull Collection<T> keywordIds)
             throws IllegalArgumentException, IllegalStateException {
 
         multiSearch.register(new StringIterator(keyword), keywordIds);
+        return this;
     }
 
     /**
