@@ -6,7 +6,7 @@
 
     <groupId>io.github.itoshkov</groupId>
     <artifactId>multi-search</artifactId>
-    <version>0.1.1</version>
+    <version>0.2</version>
     <name>multi-search - find all needles in the haystack</name>
     <description>
         A Java library for searching for multiple sequences at the same time. Like search for multiple strings in a
@@ -18,7 +18,7 @@
     <licenses>
         <license>
             <name>The Apache Software License, version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
