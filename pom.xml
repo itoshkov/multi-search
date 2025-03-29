@@ -6,7 +6,7 @@
 
     <groupId>io.github.itoshkov</groupId>
     <artifactId>multi-search</artifactId>
-    <version>0.2-SNAPSHOT</version>
+    <version>0.3-SNAPSHOT</version>
     <name>multi-search - find all needles in the haystack</name>
     <description>
         A Java library for searching for multiple sequences at the same time. Like search for multiple strings in a
