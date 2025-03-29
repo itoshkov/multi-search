@@ -16,10 +16,10 @@
 package io.github.itoshkov.multisearch;
 
 
-import io.github.itoshkov.multisearch.MultiSearch.Match;
-import io.github.itoshkov.multisearch.StringMultiSearch.Finder;
 import com.google.common.jimfs.Configuration;
 import com.google.common.jimfs.Jimfs;
+import io.github.itoshkov.multisearch.MultiSearch.Match;
+import io.github.itoshkov.multisearch.StringMultiSearch.Finder;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -108,6 +108,7 @@ class MultiSearchTest {
                 }
             }
 
+            // deserialize
             try (final InputStream is = Files.newInputStream(ser);
                  final ObjectInputStream ois = new ObjectInputStream(is)) {
 

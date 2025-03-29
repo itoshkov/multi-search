@@ -23,6 +23,7 @@ import org.jetbrains.annotations.NonBlocking;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -186,6 +187,7 @@ public abstract class MultiSearch<C, T> {
      * @param <C> The sequence "character" type.
      * @param <T> The sequence ID type.
      */
+    @SuppressWarnings("unused")
     public interface Finder<C, T> extends Serializable {
         /**
          * Search for matches in the provided sequence.
@@ -195,6 +197,28 @@ public abstract class MultiSearch<C, T> {
          */
         @NonBlocking
         @NotNull Stream<Match<T>> searchIn(@NotNull Iterator<C> sequence);
+
+        /**
+         * Search for matches in the provided sequence.
+         *
+         * @param sequence The sequence to search in (the "hay").
+         * @return A sequential stream of matches.
+         */
+        @NonBlocking
+        default Stream<Match<T>> searchIn(@NotNull Collection<C> sequence) {
+            return searchIn(sequence.iterator());
+        }
+
+        /**
+         * Search for matches in the provided sequence.
+         *
+         * @param sequence The sequence to search in (the "hay").
+         * @return A sequential stream of matches.
+         */
+        @NonBlocking
+        default Stream<Match<T>> searchIn(@NotNull C[] sequence) {
+            return searchIn(Arrays.asList(sequence));
+        }
     }
 
     /**
